@@ -31,4 +31,4 @@ jobs:
           push: true
           file: base.Dockerfile
           tags: ${{ env.BUILDROOT_BASE_IMAGE_NAME }}
-          build-args: buildroot_version=2023.08.1
+          build-args: buildroot_version=2024.11.1
