@@ -12,7 +12,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Buildrootベースイメージを探し、なければpullする
-baseImageName=enchan1207/buildroot_base
+baseImageName=sdevd/buildroot_base
 baseImageInfo=`docker images --format json | jq -r "select(.Repository == \"${baseImageName}\")"`
 if [ -z "$baseImageInfo" ]; then
     echo "Docker image $baseImageName not found. pulling..."

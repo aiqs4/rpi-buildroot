@@ -118,14 +118,14 @@ runs:
 
     # 1. Buildrootイメージの準備
     #
-    # Buildrootを動作させるためのイメージ (enchan1207/buildroot_base) を取得します。
+    # Buildrootを動作させるためのイメージ (sdevd/buildroot_base) を取得します。
 
     # イメージをキャッシュからリストア
     - name: restore cached Buildroot image
       id: restore-buildroot-image
       uses: actions/cache/restore@v3
       with:
-        path: "${{ github.action_path }}/enchan1207-buildroot_base"
+        path: "${{ github.action_path }}/sdevd-buildroot_base"
         key: buildroot_docker_image
 
     # キャッシュになければpullする
@@ -133,24 +133,24 @@ runs:
       if: steps.restore-buildroot-image.outputs.cache-hit == 'true'
       shell: bash
       working-directory: ${{ github.action_path }}
-      run: docker load -i "enchan1207-buildroot_base"
+      run: docker load -i "sdevd-buildroot_base"
     - name: pull Buildroot base image
       if: steps.restore-buildroot-image.outputs.cache-hit != 'true'
       shell: bash
       working-directory: ${{ github.action_path }}
-      run: docker pull enchan1207/buildroot_base
+      run: docker pull sdevd/buildroot_base
 
     # ビルドしたイメージを出力し、キャッシュ
     - name: write built image to file
       if: steps.restore-buildroot-image.outputs.cache-hit != 'true'
       shell: bash
       working-directory: ${{ github.action_path }}
-      run: docker save "enchan1207/buildroot_base" -o "enchan1207-buildroot_base"
+      run: docker save "sdevd/buildroot_base" -o "sdevd-buildroot_base"
     - name: cache Buildroot image
       if: steps.restore-buildroot-image.outputs.cache-hit != 'true'
       uses: actions/cache/save@v3
       with:
-        path: "${{ github.action_path }}/enchan1207-buildroot_base"
+        path: "${{ github.action_path }}/sdevd-buildroot_base"
         key: buildroot_docker_image
 
     # 2. ビルドの準備
@@ -204,7 +204,7 @@ runs:
           mkdir rfs
           volumeArgument="-v ./dist:/dist -v ./cache:/cache -v ./rfs:/rfs"
         fi
-        containerID=`docker run --rm -id $volumeArgument enchan1207/buildroot_base`
+        containerID=`docker run --rm -id $volumeArgument sdevd/buildroot_base`
         echo "Buildroot container started: $containerID"
         echo "container_id=$containerID" >> "$GITHUB_OUTPUT"
 

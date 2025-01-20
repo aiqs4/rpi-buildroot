@@ -1,4 +1,4 @@
-![banner](https://github.com/Enchan1207/rpi-buildroot/blob/b7bc2a5d01727995bf4a89d5477b4f53fe3b3058/banner.png)
+![banner](https://github.com/aiqs4/rpi-buildroot/blob/b7bc2a5d01727995bf4a89d5477b4f53fe3b3058/banner.png)
 
 Let's incorporate Raspberry Pi into your project's CI/CD loop!
 
@@ -13,8 +13,8 @@ Combined with [Github Actions caching](https://docs.github.com/en/actions/using-
 
 This repository provides:
 
- - **Buildroot base image**: The minimum Docker image for Buildroot to work. It's published on [Docker Hub](https://hub.docker.com/r/enchan1207/buildroot_base).
- - **GitHub Actions action**: The custom action for inclusion and use in other repositories.
+- **Buildroot base image**: The minimum Docker image for Buildroot to work. It's published on [Docker Hub](https://hub.docker.com/r/sdevd/buildroot_base).
+- **GitHub Actions action**: The custom action for inclusion and use in other repositories.
 
 ## Usage
 
@@ -24,11 +24,11 @@ About basic usage and examples, see [wiki](https://github.com/Enchan1207/rpi-bui
 
 ```yml
 - name: Create Raspberry Pi image
-  uses: Enchan1207/rpi-buildroot@v1
+  uses: aiqs4/rpi-buildroot@v1
   with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
-    config_file: 'path/to/buildroot.config'
-    output_path: 'sdcard.img'
+    config_file: "path/to/buildroot.config"
+    output_path: "sdcard.img"
 ```
 
 ### Details; action inputs

@@ -10,7 +10,7 @@ on:
       - base.Dockerfile
 
 env:
-  BUILDROOT_BASE_IMAGE_NAME: enchan1207/buildroot_base:latest
+  BUILDROOT_BASE_IMAGE_NAME: sdevd/buildroot_base:latest
 
 jobs:
   build_br_base:
@@ -22,7 +22,7 @@ jobs:
       - name: login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: enchan1207
+          username: sdevd
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: build image and push to registry

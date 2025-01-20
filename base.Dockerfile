@@ -1,7 +1,7 @@
 #
 # Buildroot ベースイメージ
 #
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Buildrootのバージョンが指定されていることを確認
 ARG buildroot_version
